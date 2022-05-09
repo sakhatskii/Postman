@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "06491f68-05c3-47b8-871b-332c8fc48e2c",
+		"name": "gr_29",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests_chai",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let item_1 = \"Alex\"",
+							"pm.test(\"Test_1 verify Alex\", function () {",
+							"    pm.expect(item_1).to.equal(\"Alex\")",
+							"});",
+							"",
+							"let person = {",
+							"    \"age\": \"20\",",
+							"    \"family\": {",
+							"        \"children\": [",
+							"            [",
+							"                \"Alex\",",
+							"                24",
+							"            ],",
+							"            [",
+							"                \"Kate\",",
+							"                12",
+							"            ]",
+							"        ],",
+							"        \"u_salary_1_5_year\": 6000",
+							"    },",
+							"    \"name\": \"Alex\",",
+							"    \"salary\": 1500",
+							"}",
+							"",
+							"pm.test(\"Test_2_0 verify age is 20\", function () {",
+							"    pm.expect(person.age).to.deep.equal('20')",
+							"});",
+							"",
+							"pm.test(\"Test_2_1 verify age is 20\", function () {",
+							"    pm.expect(+person.age).to.deep.equal(20)",
+							"});",
+							"",
+							"var body = pm.response.json(); // рапспарсили json из body",
+							"pm.test(\"Test_2_2 verify age is 20\", function () {",
+							"    pm.expect(body.age).to.deep.equal('20')",
+							"});",
+							"",
+							"pm.test(\"Test_3_1 verify age Alex\", function () {",
+							"    pm.expect(person.family.children[0][1]).to.deep.equal(24) // alex - 0 порядок",
+							"});",
+							"",
+							"pm.test(\"Test_3_2 verify age Kate\", function () {",
+							"    pm.expect(person.family.children[1][1]).to.deep.equal(12) // kate - 1 порядок",
+							"});",
+							"",
+							"pm.test(\"Test_4 verify exsist name\", function () {",
+							"    pm.expect(person).to.have.property('name') // в json есть параметр \"name\"",
+							"});",
+							"",
+							"pm.test(\"Test_5 verify key : value\", function () {",
+							"    pm.expect(person).to.deep.include({\"salary\": 1500}) ",
+							"});",
+							"",
+							"pm.test(\"Test_6 verify exsist Kate\", function () {",
+							"    pm.expect(person.family.children[1]).to.deep.include('Kate') ",
+							"});",
+							"",
+							"pm.test(\"Test_7_1 verify massiv kate is array \", function () {",
+							"    pm.expect(person.family.children[1]).to.be.a('array') ",
+							"});",
+							"",
+							"pm.test(\"Test_7_2 verify massiv 12 is number \", function () {",
+							"    pm.expect(person.family.children[1][1]).to.be.a('number') ",
+							"});",
+							"",
+							"pm.test(\"Test_7_3 verify name is string \", function () {",
+							"    pm.expect(person.name).to.be.a('string') ",
+							"});",
+							"",
+							"pm.test(\"Test_8 verify array include 12\", function () {",
+							"    pm.expect(person.family.children[0]).to.be.an('array').that.include(24)",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1500",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Alex",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "/s34lfgbj/Vadim/jjd909/12242kjkWpqc322823r23r3r457271evny",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/get_test_user",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"get_test_user"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "the_first",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "age",
+									"value": "20",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Alex",
+									"type": "text"
+								},
+								{
+									"key": "auth_token",
+									"value": "/s34lfgbj/Vadim/jjd909/12242kjkWpqc322823r23r3r457271evny",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://162.55.220.72:5005/get_test_user",
+							"protocol": "http",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"get_test_user"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "114"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 09 May 2022 20:09:59 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": \"20\",\n    \"family\": {\n        \"children\": [\n            [\n                \"Alex\",\n                24\n            ],\n            [\n                \"Kate\",\n                12\n            ]\n        ],\n        \"u_salary_1_5_year\": 6000\n    },\n    \"name\": \"Alex\",\n    \"salary\": 1500\n}"
+				}
+			]
+		},
+		{
+			"name": "client-server topic",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client-server topic Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5007/",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5007",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client-server topic Copy 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/first",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client-server topic Copy 3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/get_method?name=Vadim&age=38",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"get_method"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Vadim"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"disabled": true
+						},
+						{
+							"key": "age",
+							"value": "38"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "client-server topic Copy 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "99",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Alex",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
