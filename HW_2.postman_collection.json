@@ -250,6 +250,115 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "object_info_4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1. Отправить запрос.",
+							"// 2. Статус код 200",
+							"// 3. Спарсить response body в json.",
+							"let resp_data = pm.response.json()",
+							"// 4. Спарсить request.",
+							"let req_data = pm.request.url.query.toObject() // способ 1",
+							"let req_data_2 = pm.request.url.query.get(\"name\") // способ 2",
+							"let req_data_3= pm.request.url.query.all() // способ 3",
+							"console.log(req_data)",
+							"console.log(req_data_2)",
+							"console.log(req_data_3[0].value)",
+							"// 5. Проверить, что name в ответе равно name s request (name забрать из request.)",
+							"pm.test('verify name from response', function () {",
+							"    pm.expect(resp_data.name).to.deep.equal(req_data.name)",
+							"})",
+							"pm.test('verify_2 name from response', function () {",
+							"    pm.expect(resp_data.name).to.deep.equal(req_data_2)",
+							"})",
+							"pm.test('verify_3 name from response', function () {",
+							"    pm.expect(resp_data.name).to.deep.equal(req_data_3[0].value)",
+							"})",
+							"// 6. Проверить, что age в ответе равно age из request (age забрать из request.)",
+							"// 7. Вывести в консоль параметр salary из request.",
+							"// 8. Вывести в консоль параметр salary из response.",
+							"// 9. Вывести в консоль 0-й элемент параметра salary из response.",
+							"// 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.",
+							"// 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.",
+							"// 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)",
+							"// 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)",
+							"// 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)",
+							"// 15. Создать в окружении переменную name",
+							"// 16. Создать в окружении переменную age",
+							"// 17. Создать в окружении переменную salary",
+							"// 18. Передать в окружение переменную name",
+							"// 19. Передать в окружение переменную age",
+							"// 20. Передать в окружение переменную salary",
+							"// 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary."
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "31",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Sasha",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/object_info_4?name=Sasha&age=31&salary=100",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"object_info_4"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Sasha"
+						},
+						{
+							"key": "age",
+							"value": "31"
+						},
+						{
+							"key": "salary",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
