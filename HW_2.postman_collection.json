@@ -268,7 +268,7 @@
 							"let req_data_3= pm.request.url.query.all() // способ 3",
 							"console.log(req_data)",
 							"console.log(req_data_2)",
-							"console.log(req_data_3[0].value)",
+							"console.log(req_data_3)",
 							"// 5. Проверить, что name в ответе равно name s request (name забрать из request.)",
 							"pm.test('verify name from response', function () {",
 							"    pm.expect(resp_data.name).to.deep.equal(req_data.name)",
@@ -280,21 +280,54 @@
 							"    pm.expect(resp_data.name).to.deep.equal(req_data_3[0].value)",
 							"})",
 							"// 6. Проверить, что age в ответе равно age из request (age забрать из request.)",
+							"pm.test('verify age from response', function () {",
+							"    pm.expect(resp_data.age).to.deep.equal(+req_data.age)",
+							"})",
 							"// 7. Вывести в консоль параметр salary из request.",
+							"console.log(req_data.salary) // ",
+							"console.log(req_data_3[2].value)",
 							"// 8. Вывести в консоль параметр salary из response.",
+							"console.log(resp_data.salary)",
 							"// 9. Вывести в консоль 0-й элемент параметра salary из response.",
+							"console.log(resp_data.salary[0])",
 							"// 10. Вывести в консоль 1-й элемент параметра salary параметр salary из response.",
+							"console.log(resp_data.salary[1])",
 							"// 11. Вывести в консоль 2-й элемент параметра salary параметр salary из response.",
+							"console.log(resp_data.salary[2])",
 							"// 12. Проверить, что 0-й элемент параметра salary равен salary из request (salary забрать из request.)",
+							"pm.test('verify salary [0] from response', function () {",
+							"    pm.expect(resp_data.salary[0]).to.eql(+req_data.salary)",
+							"})",
 							"// 13. Проверить, что 1-й элемент параметра salary равен salary*2 из request (salary забрать из request.)",
+							"let double_salary = req_data.salary * 2",
+							"pm.test('verify salary [1] from response', function () {",
+							"    pm.expect(+resp_data.salary[1]).to.eql(double_salary)",
+							"})",
 							"// 14. Проверить, что 2-й элемент параметра salary равен salary*3 из request (salary забрать из request.)",
+							"let triple_salary = req_data.salary * 3",
+							"pm.test('verify salary [1] from response', function () {",
+							"    pm.expect(+resp_data.salary[2]).to.eql(triple_salary)",
+							"})",
 							"// 15. Создать в окружении переменную name",
+							"let name = resp_data.name",
 							"// 16. Создать в окружении переменную age",
+							"let age = resp_data.age",
 							"// 17. Создать в окружении переменную salary",
+							"let salary = resp_data.salary",
 							"// 18. Передать в окружение переменную name",
+							"pm.environment.set(\"name\", name);",
 							"// 19. Передать в окружение переменную age",
+							"pm.environment.set(\"age\", age);",
 							"// 20. Передать в окружение переменную salary",
-							"// 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary."
+							"pm.environment.set(\"salary\", salary);",
+							"// 21. Написать цикл который выведет в консоль по порядку элементы списка из параметра salary.",
+							"for (i = 100; i <= 300; i+=100) {",
+							"    console.log(i)",
+							"}",
+							"",
+							"let sal = resp_data.salary",
+							"console.log(Object.values(sal))",
+							"console.log(resp_data.salary)"
 						],
 						"type": "text/javascript"
 					}
@@ -354,6 +387,42 @@
 						{
 							"key": "salary",
 							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://162.55.220.72:5005/user_info_2?name=Sasha&age=31&salary=200",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"user_info_2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Sasha"
+						},
+						{
+							"key": "age",
+							"value": "31"
+						},
+						{
+							"key": "salary",
+							"value": "200"
 						}
 					]
 				}
