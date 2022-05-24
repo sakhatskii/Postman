@@ -466,7 +466,17 @@
 							"    pm.expect(resp_data.person.u_salary_5_years).to.deep.equal(+req_data.salary * 4.2)",
 							"})",
 							"// 22. ***Написать цикл который выведет в консоль по порядку элементы списка из параметра person.",
-							"console.log(resp_data.person)"
+							"console.log(resp_data.person)",
+							"",
+							"let obj = resp_data.person",
+							"for (let prop in obj) {",
+							"    console.log('obj. ' + prop + ' = ' + obj[prop])",
+							"}",
+							"",
+							"",
+							"for(var i=0 in resp_data.person) {",
+							"  console.log(resp_data.person[i]);",
+							"}"
 						],
 						"type": "text/javascript"
 					}
