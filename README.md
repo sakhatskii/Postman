@@ -1,5 +1,6 @@
 # Postman
-Создать запросы в Postman.
+Создать запросы в Postman 
+--> HW.postman_collection.json
 
 Protocol: http
 IP: 162.55.220.72
