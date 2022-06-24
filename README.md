@@ -1,6 +1,7 @@
 # Postman
-Создать запросы в Postman 
+
 Homework 1 --> HW.postman_collection.json
+Создать запросы в Postman 
 
 Protocol: http
 IP: 162.55.220.72
@@ -136,7 +137,7 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
           
-Homework 2 
+Homework 2 --> HW_2.postman_collection.json
   
 
 http://162.55.220.72:5005/first
